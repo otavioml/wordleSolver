@@ -19,7 +19,6 @@ nonexistent_letters = []
 semi_correct_letters = []
 correct_letters = []
 
-leave = False
 
 for i in range(5):
     if (status_letters[i] == '0'):
@@ -33,6 +32,8 @@ it = 0
 
 while it < len(five_letter_word_list):
 
+    leave = False
+
     current_word = five_letter_word_list[it].lower()
 
     #if the word contains the nonexistent letter, remove from list
@@ -41,6 +42,7 @@ while it < len(five_letter_word_list):
             five_letter_word_list.pop(it)
             it -= 1
             leave = True
+            break
 
 
     #if the word does not contains existent letter or contains it in the wrong place, remove from list
@@ -50,11 +52,13 @@ while it < len(five_letter_word_list):
                 five_letter_word_list.pop(it)
                 it -= 1
                 leave = True
+                break
             else:
                 if (current_word[scl[1]] == scl[0]):
                     five_letter_word_list.pop(it)
                     it -= 1
                     leave = True
+                    break
 
     it += 1
 
