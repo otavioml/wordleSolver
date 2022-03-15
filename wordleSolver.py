@@ -1,12 +1,7 @@
-from nltk.corpus import words
-word_list = words.words()
+import random
 
-five_letter_word_list = []
-for word in word_list:
-    if (len(word) == 5):
-        five_letter_word_list.append(word)
-
-print(len(five_letter_word_list))
+with open('data/words.txt') as f:
+    five_letter_word_list = f.read().splitlines()
 
 print("0 is for nonexistent\n1 is for correct letter, but in the wrong place\n2 is for correct letter at the correct place")
 
@@ -71,5 +66,7 @@ while len(five_letter_word_list) != 1:
 
         it += 1
 
-    print("Sugestions: ", five_letter_word_list[:10])
+    suggestions_size = min(len(five_letter_word_list), 10)
+
+    print("Sugestions: ", random.sample(five_letter_word_list, suggestions_size))
     print(len(five_letter_word_list))
